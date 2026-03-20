@@ -13,9 +13,9 @@ export default function ComunaLayer({ data, activeModule, selectedComuna }) {
       }
       return {
         fillColor,
-        fillOpacity: isSelected ? 0.5 : 0.25,
-        color: isSelected ? '#3B82F6' : '#475569',
-        weight: isSelected ? 3 : 1,
+        fillOpacity: isSelected ? 0.55 : 0.35,
+        color: isSelected ? '#1D4ED8' : '#334155',
+        weight: isSelected ? 3 : 1.5,
       };
     };
   }, [activeModule, selectedComuna]);

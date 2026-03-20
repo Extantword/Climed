@@ -1,7 +1,7 @@
 export const MEDELLIN_CENTER = [6.2518, -75.5636];
 export const MEDELLIN_ZOOM = 12;
 
-export const TILE_URL = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+export const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 export const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
 
 export const COMUNAS = [
