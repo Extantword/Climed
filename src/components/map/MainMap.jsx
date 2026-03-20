@@ -1,22 +1,12 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { MEDELLIN_CENTER, MEDELLIN_ZOOM, TILE_URL, TILE_ATTRIBUTION } from '../../utils/constants';
-import ComunaLayer from './ComunaLayer';
-import QuebradaLayer from './QuebradaLayer';
-import PuntosCriticos from './PuntosCriticos';
+import RadarLayer from './RadarLayer';
 
-export default function MainMap({ comunasData, quebradasData, puntosCriticos, selectedComuna }) {
+export default function MainMap({ host, currentFrame }) {
   return (
     <MapContainer center={MEDELLIN_CENTER} zoom={MEDELLIN_ZOOM} className="w-full h-full" zoomControl={true}>
       <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} />
-      {comunasData && (
-        <ComunaLayer data={comunasData} activeModule="inundaciones" selectedComuna={selectedComuna} />
-      )}
-      {quebradasData && (
-        <QuebradaLayer data={quebradasData} />
-      )}
-      {puntosCriticos && (
-        <PuntosCriticos data={puntosCriticos} />
-      )}
+      <RadarLayer host={host} frame={currentFrame} />
     </MapContainer>
   );
 }
