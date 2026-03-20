@@ -15,5 +15,5 @@ export async function fetchRadarFrames() {
 export function radarTileUrl(host, path) {
   // Color scheme 6 = classic radar (green→yellow→red)
   // smooth=1, snow=1
-  return `${host}${path}/512/{z}/{x}/{y}/6/1_1.png`;
+  return `${host}${path}/256/{z}/{x}/{y}/6/1_1.png`;
 }
