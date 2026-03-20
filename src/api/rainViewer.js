@@ -1,0 +1,19 @@
+const RAINVIEWER_API = 'https://api.rainviewer.com/public/weather-maps.json';
+
+export async function fetchRadarFrames() {
+  const res = await fetch(RAINVIEWER_API);
+  if (!res.ok) throw new Error('RainViewer API error');
+  const data = await res.json();
+  return {
+    host: data.host,
+    past: data.radar?.past || [],
+    nowcast: data.radar?.nowcast || [],
+  };
+}
+
+// Build tile URL for a given frame path
+export function radarTileUrl(host, path) {
+  // Color scheme 6 = classic radar (green→yellow→red)
+  // smooth=1, snow=1
+  return `${host}${path}/512/{z}/{x}/{y}/6/1_1.png`;
+}
