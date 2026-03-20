@@ -1,0 +1,142 @@
+[
+  {
+    "lat": 6.2950,
+    "lng": -75.5380,
+    "nombre": "Barrio Santo Domingo Savio",
+    "descripcion": "Ladera oriental con alta pendiente, suelos saturados y construcciones informales sin cimentacion adecuada",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2880,
+    "lng": -75.5320,
+    "nombre": "Barrio Popular No. 1",
+    "descripcion": "Zona de ladera con rellenos no controlados y escorrentia superficial concentrada",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2820,
+    "lng": -75.5290,
+    "nombre": "Sector Carpinelo",
+    "descripcion": "Talud inestable con antecedentes de movimientos en masa recurrentes durante temporada de lluvias",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2750,
+    "lng": -75.5350,
+    "nombre": "Barrio La Cruz - La Honda",
+    "descripcion": "Asentamiento en zona de alto riesgo no mitigable con suelos residuales saturados",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2690,
+    "lng": -75.5870,
+    "nombre": "Sector Pan de Azucar - Robledo",
+    "descripcion": "Ladera occidental con cortes inadecuados del terreno para construccion",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2580,
+    "lng": -75.6020,
+    "nombre": "Barrio El Socorro - San Javier",
+    "descripcion": "Zona con drenajes obstruidos y acumulacion de aguas lluvias en taludes",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2520,
+    "lng": -75.6080,
+    "nombre": "Sector Loma Hermosa - San Javier",
+    "descripcion": "Pendientes superiores al 50% con viviendas en zona de retiro de quebrada",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2460,
+    "lng": -75.5380,
+    "nombre": "Barrio Villa Tina",
+    "descripcion": "Antecedentes historicos de deslizamiento catastrofico, suelos inestables persistentes",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2400,
+    "lng": -75.5310,
+    "nombre": "Sector La Sierra - Villa Hermosa",
+    "descripcion": "Laderas con procesos erosivos activos y deforestacion",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2780,
+    "lng": -75.5800,
+    "nombre": "Barrio Picacho - Doce de Octubre",
+    "descripcion": "Cerro con suelos residuales delgados sobre roca meteorizada",
+    "nivelRiesgo": "alto"
+  },
+  {
+    "lat": 6.2340,
+    "lng": -75.5960,
+    "nombre": "Sector El Corazon - San Javier",
+    "descripcion": "Terreno con infiltracion de aguas servidas que debilitan la estabilidad del suelo",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2230,
+    "lng": -75.5850,
+    "nombre": "Barrio Las Violetas - Belen",
+    "descripcion": "Ladera con material de relleno no compactado y pendiente moderada",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2650,
+    "lng": -75.5440,
+    "nombre": "Sector Versalles - Manrique",
+    "descripcion": "Zona de transicion con suelos arcillosos expansivos y filtraciones",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2150,
+    "lng": -75.5480,
+    "nombre": "Sector La Aguacatala - El Poblado",
+    "descripcion": "Talud de corte en via con evidencia de reptacion lenta del terreno",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2860,
+    "lng": -75.5630,
+    "nombre": "Barrio Toscana - Castilla",
+    "descripcion": "Borde de meseta con erosion retrogresiva en temporada invernal",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2710,
+    "lng": -75.5740,
+    "nombre": "Sector El Cucaracho - Robledo",
+    "descripcion": "Ladera intervenida con cortes no estabilizados para accesos viales",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2430,
+    "lng": -75.5550,
+    "nombre": "Barrio Loreto - Buenos Aires",
+    "descripcion": "Zona con nivel freatico superficial y suelos residuales de baja cohesion",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2560,
+    "lng": -75.5930,
+    "nombre": "Sector La Loma - La America",
+    "descripcion": "Pendiente moderada con construcciones que alteran el drenaje natural",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2200,
+    "lng": -75.5720,
+    "nombre": "Barrio El Rincon - Belen",
+    "descripcion": "Terreno con antecedentes de flujos de lodo menores en epocas de lluvia intensa",
+    "nivelRiesgo": "medio"
+  },
+  {
+    "lat": 6.2910,
+    "lng": -75.5460,
+    "nombre": "Sector Maria Cano Carambolas",
+    "descripcion": "Ladera nororiental con ocupacion informal sobre depositos de vertiente inestables",
+    "nivelRiesgo": "alto"
+  }
+]
