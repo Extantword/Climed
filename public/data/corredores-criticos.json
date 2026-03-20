@@ -1,0 +1,92 @@
+[
+  {
+    "nombre": "Autopista Norte (Cra 64)",
+    "siniestros": 13810,
+    "muertos": 80,
+    "heridos": 8250,
+    "descripcion": "Principal corredor vial norte-sur, alta velocidad y mezcla de trafico pesado con motocicletas",
+    "inicio": { "lat": 6.3350, "lng": -75.5550 },
+    "fin": { "lat": 6.2700, "lng": -75.5680 }
+  },
+  {
+    "nombre": "Avenida Regional",
+    "siniestros": 8000,
+    "muertos": 55,
+    "heridos": 4800,
+    "descripcion": "Via paralela al rio Medellin con accesos conflictivos y alta densidad vehicular",
+    "inicio": { "lat": 6.3200, "lng": -75.5530 },
+    "fin": { "lat": 6.2050, "lng": -75.5750 }
+  },
+  {
+    "nombre": "Autopista Sur",
+    "siniestros": 7500,
+    "muertos": 50,
+    "heridos": 4500,
+    "descripcion": "Corredor sur con tramos de alta velocidad y conexion intermunicipal hacia Itagui y Envigado",
+    "inicio": { "lat": 6.2400, "lng": -75.5680 },
+    "fin": { "lat": 6.1750, "lng": -75.5900 }
+  },
+  {
+    "nombre": "Avenida 33",
+    "siniestros": 4652,
+    "muertos": 66,
+    "heridos": 2790,
+    "descripcion": "Corredor transversal de alto flujo que conecta el centro con el occidente, cruces semaforizados conflictivos",
+    "inicio": { "lat": 6.2520, "lng": -75.5560 },
+    "fin": { "lat": 6.2520, "lng": -75.5950 }
+  },
+  {
+    "nombre": "Las Palmas",
+    "siniestros": 3200,
+    "muertos": 45,
+    "heridos": 1920,
+    "descripcion": "Via de montana con curvas cerradas, pendientes pronunciadas y neblina frecuente",
+    "inicio": { "lat": 6.2300, "lng": -75.5420 },
+    "fin": { "lat": 6.2100, "lng": -75.5050 }
+  },
+  {
+    "nombre": "Via Tunel de Occidente",
+    "siniestros": 2800,
+    "muertos": 30,
+    "heridos": 1680,
+    "descripcion": "Via de conexion al occidente antioqueno con tramos de alta velocidad y zonas de adelantamiento peligroso",
+    "inicio": { "lat": 6.2620, "lng": -75.5900 },
+    "fin": { "lat": 6.2800, "lng": -75.6500 }
+  },
+  {
+    "nombre": "San Juan",
+    "siniestros": 4000,
+    "muertos": 35,
+    "heridos": 2400,
+    "descripcion": "Avenida principal este-oeste con alta afluencia de transporte publico y peatones",
+    "inicio": { "lat": 6.2480, "lng": -75.5580 },
+    "fin": { "lat": 6.2470, "lng": -75.6100 }
+  },
+  {
+    "nombre": "Carrera 65",
+    "siniestros": 3500,
+    "muertos": 28,
+    "heridos": 2100,
+    "descripcion": "Eje vial norte-sur occidental con intersecciones de alto conflicto y presencia de ciclistas",
+    "inicio": { "lat": 6.2900, "lng": -75.5760 },
+    "fin": { "lat": 6.2250, "lng": -75.5820 }
+  },
+  {
+    "nombre": "Avenida El Poblado",
+    "siniestros": 3000,
+    "muertos": 25,
+    "heridos": 1800,
+    "descripcion": "Corredor comercial con alto flujo vehicular, giros a la izquierda peligrosos y congestion recurrente",
+    "inicio": { "lat": 6.2550, "lng": -75.5620 },
+    "fin": { "lat": 6.2050, "lng": -75.5530 }
+  },
+  {
+    "nombre": "Avenida Guayabal",
+    "siniestros": 2500,
+    "muertos": 20,
+    "heridos": 1500,
+    "descripcion": "Via industrial con mezcla de vehiculos pesados, accesos a bodegas y cruces peatonales insuficientes",
+    "inicio": { "lat": 6.2300, "lng": -75.5730 },
+    "fin": { "lat": 6.2050, "lng": -75.5800 }
+  }
+]

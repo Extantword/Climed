@@ -1,0 +1,257 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Popular", "numero": 1, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5420, 6.2900], [-75.5320, 6.2900], [-75.5280, 6.2800],
+          [-75.5300, 6.2700], [-75.5400, 6.2700], [-75.5440, 6.2800],
+          [-75.5420, 6.2900]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Santa Cruz", "numero": 2, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5530, 6.2850], [-75.5420, 6.2850], [-75.5400, 6.2750],
+          [-75.5440, 6.2680], [-75.5530, 6.2680], [-75.5560, 6.2750],
+          [-75.5530, 6.2850]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Manrique", "numero": 3, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5350, 6.2750], [-75.5250, 6.2750], [-75.5220, 6.2620],
+          [-75.5260, 6.2550], [-75.5370, 6.2550], [-75.5380, 6.2650],
+          [-75.5350, 6.2750]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Aranjuez", "numero": 4, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5550, 6.2750], [-75.5440, 6.2750], [-75.5420, 6.2650],
+          [-75.5450, 6.2580], [-75.5560, 6.2580], [-75.5580, 6.2670],
+          [-75.5550, 6.2750]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Castilla", "numero": 5, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5750, 6.2850], [-75.5630, 6.2850], [-75.5610, 6.2750],
+          [-75.5650, 6.2680], [-75.5760, 6.2680], [-75.5780, 6.2770],
+          [-75.5750, 6.2850]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Doce de Octubre", "numero": 6, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5800, 6.2780], [-75.5700, 6.2780], [-75.5680, 6.2680],
+          [-75.5710, 6.2600], [-75.5810, 6.2600], [-75.5830, 6.2690],
+          [-75.5800, 6.2780]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Robledo", "numero": 7, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5900, 6.2700], [-75.5780, 6.2700], [-75.5750, 6.2580],
+          [-75.5790, 6.2500], [-75.5910, 6.2500], [-75.5930, 6.2600],
+          [-75.5900, 6.2700]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Villa Hermosa", "numero": 8, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5400, 6.2580], [-75.5280, 6.2580], [-75.5250, 6.2460],
+          [-75.5290, 6.2380], [-75.5410, 6.2380], [-75.5430, 6.2480],
+          [-75.5400, 6.2580]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Buenos Aires", "numero": 9, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5500, 6.2450], [-75.5380, 6.2450], [-75.5350, 6.2340],
+          [-75.5390, 6.2270], [-75.5510, 6.2270], [-75.5530, 6.2360],
+          [-75.5500, 6.2450]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "La Candelaria", "numero": 10, "nivelRiesgo": "bajo" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5650, 6.2560], [-75.5540, 6.2560], [-75.5520, 6.2470],
+          [-75.5550, 6.2400], [-75.5660, 6.2400], [-75.5680, 6.2490],
+          [-75.5650, 6.2560]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Laureles - Estadio", "numero": 11, "nivelRiesgo": "bajo" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5800, 6.2550], [-75.5680, 6.2550], [-75.5660, 6.2450],
+          [-75.5700, 6.2380], [-75.5810, 6.2380], [-75.5830, 6.2470],
+          [-75.5800, 6.2550]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "La America", "numero": 12, "nivelRiesgo": "bajo" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5900, 6.2520], [-75.5800, 6.2520], [-75.5780, 6.2420],
+          [-75.5810, 6.2350], [-75.5910, 6.2350], [-75.5930, 6.2440],
+          [-75.5900, 6.2520]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "San Javier", "numero": 13, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.6050, 6.2550], [-75.5920, 6.2550], [-75.5900, 6.2420],
+          [-75.5940, 6.2340], [-75.6060, 6.2340], [-75.6080, 6.2440],
+          [-75.6050, 6.2550]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "El Poblado", "numero": 14, "nivelRiesgo": "bajo" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5600, 6.2380], [-75.5450, 6.2380], [-75.5400, 6.2180],
+          [-75.5440, 6.2050], [-75.5620, 6.2050], [-75.5650, 6.2200],
+          [-75.5600, 6.2380]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Guayabal", "numero": 15, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5750, 6.2300], [-75.5620, 6.2300], [-75.5600, 6.2180],
+          [-75.5640, 6.2100], [-75.5760, 6.2100], [-75.5780, 6.2200],
+          [-75.5750, 6.2300]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Belen", "numero": 16, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5900, 6.2380], [-75.5780, 6.2380], [-75.5760, 6.2250],
+          [-75.5800, 6.2150], [-75.5920, 6.2150], [-75.5940, 6.2270],
+          [-75.5900, 6.2380]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Palmitas", "numero": 50, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.6600, 6.3100], [-75.6350, 6.3100], [-75.6300, 6.2850],
+          [-75.6400, 6.2700], [-75.6650, 6.2700], [-75.6700, 6.2900],
+          [-75.6600, 6.3100]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "San Cristobal", "numero": 60, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.6300, 6.2750], [-75.6100, 6.2750], [-75.6050, 6.2550],
+          [-75.6120, 6.2400], [-75.6350, 6.2400], [-75.6380, 6.2600],
+          [-75.6300, 6.2750]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Altavista", "numero": 70, "nivelRiesgo": "alto" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.6200, 6.2350], [-75.6000, 6.2350], [-75.5950, 6.2150],
+          [-75.6020, 6.2000], [-75.6250, 6.2000], [-75.6280, 6.2180],
+          [-75.6200, 6.2350]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "San Antonio de Prado", "numero": 80, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.6500, 6.2100], [-75.6250, 6.2100], [-75.6200, 6.1850],
+          [-75.6280, 6.1700], [-75.6550, 6.1700], [-75.6580, 6.1900],
+          [-75.6500, 6.2100]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "nombre": "Santa Elena", "numero": 90, "nivelRiesgo": "medio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.5200, 6.2700], [-75.4900, 6.2700], [-75.4850, 6.2450],
+          [-75.4950, 6.2250], [-75.5250, 6.2250], [-75.5300, 6.2500],
+          [-75.5200, 6.2700]
+        ]]
+      }
+    }
+  ]
+}

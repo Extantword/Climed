@@ -1,0 +1,114 @@
+{
+  "Popular": {
+    "2020": { "total": 320, "muertos": 12, "heridos": 185 },
+    "2021": { "total": 298, "muertos": 10, "heridos": 172 },
+    "2022": { "total": 345, "muertos": 14, "heridos": 201 },
+    "2023": { "total": 367, "muertos": 11, "heridos": 215 },
+    "2024": { "total": 389, "muertos": 15, "heridos": 228 }
+  },
+  "Santa Cruz": {
+    "2020": { "total": 285, "muertos": 9, "heridos": 160 },
+    "2021": { "total": 270, "muertos": 8, "heridos": 148 },
+    "2022": { "total": 310, "muertos": 11, "heridos": 178 },
+    "2023": { "total": 325, "muertos": 10, "heridos": 190 },
+    "2024": { "total": 340, "muertos": 12, "heridos": 198 }
+  },
+  "Manrique": {
+    "2020": { "total": 410, "muertos": 15, "heridos": 240 },
+    "2021": { "total": 385, "muertos": 13, "heridos": 225 },
+    "2022": { "total": 430, "muertos": 17, "heridos": 260 },
+    "2023": { "total": 455, "muertos": 14, "heridos": 275 },
+    "2024": { "total": 478, "muertos": 18, "heridos": 290 }
+  },
+  "Aranjuez": {
+    "2020": { "total": 520, "muertos": 18, "heridos": 310 },
+    "2021": { "total": 495, "muertos": 16, "heridos": 290 },
+    "2022": { "total": 548, "muertos": 20, "heridos": 335 },
+    "2023": { "total": 575, "muertos": 19, "heridos": 350 },
+    "2024": { "total": 600, "muertos": 22, "heridos": 368 }
+  },
+  "Castilla": {
+    "2020": { "total": 680, "muertos": 22, "heridos": 420 },
+    "2021": { "total": 650, "muertos": 20, "heridos": 398 },
+    "2022": { "total": 715, "muertos": 25, "heridos": 445 },
+    "2023": { "total": 740, "muertos": 23, "heridos": 460 },
+    "2024": { "total": 768, "muertos": 26, "heridos": 480 }
+  },
+  "Doce de Octubre": {
+    "2020": { "total": 380, "muertos": 14, "heridos": 220 },
+    "2021": { "total": 360, "muertos": 12, "heridos": 205 },
+    "2022": { "total": 405, "muertos": 16, "heridos": 240 },
+    "2023": { "total": 425, "muertos": 13, "heridos": 255 },
+    "2024": { "total": 448, "muertos": 17, "heridos": 270 }
+  },
+  "Robledo": {
+    "2020": { "total": 550, "muertos": 19, "heridos": 340 },
+    "2021": { "total": 520, "muertos": 17, "heridos": 318 },
+    "2022": { "total": 580, "muertos": 21, "heridos": 360 },
+    "2023": { "total": 610, "muertos": 20, "heridos": 378 },
+    "2024": { "total": 635, "muertos": 23, "heridos": 395 }
+  },
+  "Villa Hermosa": {
+    "2020": { "total": 440, "muertos": 16, "heridos": 265 },
+    "2021": { "total": 415, "muertos": 14, "heridos": 248 },
+    "2022": { "total": 465, "muertos": 18, "heridos": 285 },
+    "2023": { "total": 490, "muertos": 17, "heridos": 300 },
+    "2024": { "total": 512, "muertos": 19, "heridos": 315 }
+  },
+  "Buenos Aires": {
+    "2020": { "total": 470, "muertos": 17, "heridos": 280 },
+    "2021": { "total": 445, "muertos": 15, "heridos": 262 },
+    "2022": { "total": 498, "muertos": 19, "heridos": 305 },
+    "2023": { "total": 520, "muertos": 18, "heridos": 320 },
+    "2024": { "total": 545, "muertos": 20, "heridos": 335 }
+  },
+  "La Candelaria": {
+    "2020": { "total": 890, "muertos": 28, "heridos": 560 },
+    "2021": { "total": 850, "muertos": 25, "heridos": 530 },
+    "2022": { "total": 935, "muertos": 30, "heridos": 590 },
+    "2023": { "total": 970, "muertos": 27, "heridos": 615 },
+    "2024": { "total": 1010, "muertos": 32, "heridos": 640 }
+  },
+  "Laureles - Estadio": {
+    "2020": { "total": 750, "muertos": 20, "heridos": 470 },
+    "2021": { "total": 720, "muertos": 18, "heridos": 445 },
+    "2022": { "total": 790, "muertos": 22, "heridos": 500 },
+    "2023": { "total": 815, "muertos": 21, "heridos": 520 },
+    "2024": { "total": 845, "muertos": 24, "heridos": 540 }
+  },
+  "La America": {
+    "2020": { "total": 420, "muertos": 13, "heridos": 255 },
+    "2021": { "total": 398, "muertos": 11, "heridos": 238 },
+    "2022": { "total": 445, "muertos": 15, "heridos": 275 },
+    "2023": { "total": 468, "muertos": 14, "heridos": 290 },
+    "2024": { "total": 490, "muertos": 16, "heridos": 305 }
+  },
+  "San Javier": {
+    "2020": { "total": 350, "muertos": 13, "heridos": 205 },
+    "2021": { "total": 330, "muertos": 11, "heridos": 190 },
+    "2022": { "total": 375, "muertos": 15, "heridos": 225 },
+    "2023": { "total": 395, "muertos": 14, "heridos": 240 },
+    "2024": { "total": 415, "muertos": 16, "heridos": 255 }
+  },
+  "El Poblado": {
+    "2020": { "total": 620, "muertos": 15, "heridos": 380 },
+    "2021": { "total": 595, "muertos": 13, "heridos": 360 },
+    "2022": { "total": 655, "muertos": 17, "heridos": 405 },
+    "2023": { "total": 680, "muertos": 16, "heridos": 425 },
+    "2024": { "total": 710, "muertos": 18, "heridos": 445 }
+  },
+  "Guayabal": {
+    "2020": { "total": 580, "muertos": 20, "heridos": 360 },
+    "2021": { "total": 555, "muertos": 18, "heridos": 340 },
+    "2022": { "total": 610, "muertos": 22, "heridos": 385 },
+    "2023": { "total": 635, "muertos": 21, "heridos": 400 },
+    "2024": { "total": 660, "muertos": 24, "heridos": 418 }
+  },
+  "Belen": {
+    "2020": { "total": 510, "muertos": 16, "heridos": 310 },
+    "2021": { "total": 485, "muertos": 14, "heridos": 292 },
+    "2022": { "total": 540, "muertos": 18, "heridos": 335 },
+    "2023": { "total": 565, "muertos": 17, "heridos": 350 },
+    "2024": { "total": 590, "muertos": 19, "heridos": 368 }
+  }
+}
