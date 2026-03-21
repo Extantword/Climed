@@ -7,5 +7,11 @@ export default defineConfig({
   base: '/Climed/',
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        traffic: 'traffic.html',
+      },
+    },
   },
 });
