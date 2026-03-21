@@ -1,15 +1,5 @@
-export const MEDELLIN_CENTER = [6.2518, -75.5636];
-export const MEDELLIN_ZOOM = 12;
-
-export const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-export const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-export const TILE_MAX_ZOOM = 19;
-
-// Antioquia department bounding box (SW corner, NE corner)
-export const ANTIOQUIA_BOUNDS = [
-  [5.42, -77.13], // Southwest
-  [8.88, -73.87], // Northeast
-];
+export const MEDELLIN_CENTER = { latitude: 6.2518, longitude: -75.5636 };
+export const MEDELLIN_ZOOM_DELTA = { latitudeDelta: 0.12, longitudeDelta: 0.12 };
 
 export const COMUNAS = [
   { numero: 1, nombre: 'Popular' },
@@ -84,3 +74,14 @@ export const RIVER_THRESHOLDS = {
   precaucion: 150,
   alerta: 300,
 };
+
+// Radar intensity legend levels
+export const RADAR_LEVELS = [
+  { color: '#C8F0C8', label: 'Ligera' },
+  { color: '#00D000', label: 'Moderada' },
+  { color: '#009000', label: '' },
+  { color: '#FFFF00', label: 'Fuerte' },
+  { color: '#FF6600', label: '' },
+  { color: '#FF0000', label: 'Intensa' },
+  { color: '#CC00CC', label: 'Extrema' },
+];

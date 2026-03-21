@@ -8,15 +8,22 @@ function formatTime(date) {
   return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-export default function Header({ frameTime, isNowcast, loading, onRefresh }) {
+export default function Header({ frameTime, isNowcast, loading, onRefresh, onHelp }) {
   return (
     <header className="bg-white/90 backdrop-blur border-b border-slate-200 px-4 py-2 flex items-center justify-between shadow-sm">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <span className="text-2xl">🌧️</span>
         <div>
           <h1 className="text-base font-bold text-slate-900 leading-tight">Radar de Lluvia — Medellín</h1>
           <p className="text-xs text-slate-500">Precipitación en tiempo real</p>
         </div>
+        <button
+          onClick={onHelp}
+          className="ml-1 px-2.5 py-1 rounded-lg text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors"
+          title="¿Cómo funciona?"
+        >
+          ¿Cómo funciona?
+        </button>
       </div>
 
       <div className="flex items-center gap-3">
