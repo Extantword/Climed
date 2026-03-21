@@ -98,12 +98,17 @@ export function useHistoricalReplay() {
   const pastCount = timeSlots.filter((t) => new Date(t) <= now).length;
   const isForecasting = currentIndex >= pastCount;
 
+  // Points at the most recent past time slot (closest to "now")
+  const nowSlot = pastCount > 0 ? timeSlots[pastCount - 1] : null;
+  const nowPoints = nowSlot ? (frames.get(nowSlot) || []) : [];
+
   return {
     timeSlots,
     currentIndex,
     setCurrentIndex,
     currentPoints,
     currentTime,
+    nowPoints,
     pastCount,
     isForecasting,
     playing,
