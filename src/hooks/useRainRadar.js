@@ -6,7 +6,7 @@ export function useRainRadar() {
   const [past, setPast] = useState([]);
   const [nowcast, setNowcast] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(true);
   const intervalRef = useRef(null);
 
