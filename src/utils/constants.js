@@ -1,8 +1,15 @@
 export const MEDELLIN_CENTER = [6.2518, -75.5636];
 export const MEDELLIN_ZOOM = 12;
 
-export const TILE_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-export const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>';
+export const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+export const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+export const TILE_MAX_ZOOM = 19;
+
+// Antioquia department bounding box (SW corner, NE corner)
+export const ANTIOQUIA_BOUNDS = [
+  [5.42, -77.13], // Southwest
+  [8.88, -73.87], // Northeast
+];
 
 export const COMUNAS = [
   { numero: 1, nombre: 'Popular' },
