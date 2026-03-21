@@ -1,10 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { fetchHistoricalPrecipitation } from '../api/openMeteoPrecip';
 
-/**
- * Velocity presets: label shown in UI → interval in ms between frames.
- * Lower interval = faster playback.
- */
 export const VELOCITY_PRESETS = [
   { label: '0.5×', ms: 1400 },
   { label: '1×', ms: 700 },
@@ -13,9 +9,6 @@ export const VELOCITY_PRESETS = [
   { label: '8×', ms: 90 },
 ];
 
-/**
- * Builds a time-indexed structure from Open-Meteo station data.
- */
 function buildFrames(stationsData) {
   if (!stationsData.length) return { timeSlots: [], frames: new Map() };
 
@@ -43,7 +36,7 @@ export function useHistoricalReplay() {
   const [frames, setFrames] = useState(new Map());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [velocityIdx, setVelocityIdx] = useState(1); // default 1× speed
+  const [velocityIdx, setVelocityIdx] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const intervalRef = useRef(null);
@@ -58,7 +51,6 @@ export function useHistoricalReplay() {
       const { timeSlots: ts, frames: fr } = buildFrames(data);
       setTimeSlots(ts);
       setFrames(fr);
-      // Start at the beginning (7 days ago) for replay
       setCurrentIndex(0);
     } catch (e) {
       setError(e.message);
@@ -72,7 +64,6 @@ export function useHistoricalReplay() {
     load();
   }, [load]);
 
-  // Playback animation — re-creates interval when velocity changes
   useEffect(() => {
     clearInterval(intervalRef.current);
     if (!playing || timeSlots.length === 0) return;
@@ -93,7 +84,6 @@ export function useHistoricalReplay() {
   const currentPoints = frames.get(currentTimeSlot) || [];
   const currentTime = currentTimeSlot ? new Date(currentTimeSlot) : null;
 
-  // Separate past vs forecast
   const now = new Date();
   const pastCount = timeSlots.filter((t) => new Date(t) <= now).length;
   const isForecasting = currentIndex >= pastCount;
