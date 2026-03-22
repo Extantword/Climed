@@ -17,3 +17,8 @@ export function radarTileUrl(host, path) {
   // smooth=1, snow=1
   return `${host}${path}/256/{z}/{x}/{y}/6/1_1.png`;
 }
+
+// Build data tile URL (color scheme 0 = raw dBZ in Red channel)
+export function radarDataTileUrl(host, path, zoom, tileX, tileY) {
+  return `${host}${path}/256/${zoom}/${tileX}/${tileY}/0/0_0.png`;
+}

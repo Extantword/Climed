@@ -6,10 +6,12 @@ import RadarLegend from './components/RadarLegend';
 import HelpModal from './components/HelpModal';
 import { useRainRadar } from './hooks/useRainRadar';
 import { useHistoricalReplay } from './hooks/useHistoricalReplay';
+import { useRadarPrecip } from './hooks/useRadarPrecip';
 
 export default function App() {
   const radar = useRainRadar();
   const replay = useHistoricalReplay();
+  const radarPrecip = useRadarPrecip(radar.host, radar.currentFrame, radar.playing);
   const [replayActive, setReplayActive] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
 
@@ -20,7 +22,7 @@ export default function App() {
         host={radar.host}
         currentFrame={radar.currentFrame}
         replayActive={true}
-        replayPoints={replayActive ? replay.currentPoints : replay.nowPoints}
+        replayPoints={replayActive ? replay.currentPoints : radarPrecip.radarPoints}
       />
 
       {/* Top overlay: header */}
