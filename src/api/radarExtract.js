@@ -1,15 +1,20 @@
 /**
- * Radar pixel extraction — reads RainViewer tiles (color scheme 0)
- * to get real dBZ values at specific lat/lng points, then converts to mm/h.
+ * Radar pixel extraction — reads RainViewer visual tiles (color scheme 6)
+ * and reverse-maps the pixel color to approximate precipitation (mm/h).
  *
- * Color scheme 0: Red channel encodes raw dBZ as R-32.
- * Tile URL: ${host}${path}/256/${z}/${tileX}/${tileY}/0/0_0.png
+ * Uses the same tile format displayed on the map overlay (scheme 6, smooth=1,
+ * snow=1) so detected precipitation visually matches the radar overlay.
+ *
+ * Tile URL: ${host}${path}/256/6/${tileX}/${tileY}/6/1_1.png
+ * Zoom 6 is the highest level RainViewer supports for radar tiles.
+ * Each pixel ≈ 2.4 km; we scan a 11×11 neighborhood (~26 km²) per station.
  */
 
 import { STATION_POINTS } from './openMeteoPrecip';
 
 const TILE_SIZE = 256;
-const DEFAULT_ZOOM = 6;
+const ZOOM = 6;
+const SCAN_RADIUS = 5; // 11×11 pixels ≈ 26 km² at zoom 6
 
 /**
  * Convert lat/lng to slippy-map tile coordinates + pixel offset within that tile.
@@ -31,66 +36,95 @@ export function latLngToTilePixel(lat, lng, zoom) {
 
 /**
  * Fetch a tile PNG and return its ImageData via an offscreen canvas.
- * Returns null on any error (CORS, network, etc.).
+ * Uses fetch → blob → createImageBitmap to avoid CORS canvas-taint issues.
  */
-function fetchTilePixels(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = TILE_SIZE;
-        canvas.height = TILE_SIZE;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        resolve(ctx.getImageData(0, 0, TILE_SIZE, TILE_SIZE));
-      } catch {
-        resolve(null);
-      }
-    };
-    img.onerror = () => resolve(null);
-    img.src = url;
-  });
+async function fetchTilePixels(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const blob = await res.blob();
+    const bitmap = await createImageBitmap(blob);
+    const canvas = document.createElement('canvas');
+    canvas.width = TILE_SIZE;
+    canvas.height = TILE_SIZE;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(bitmap, 0, 0);
+    bitmap.close();
+    return ctx.getImageData(0, 0, TILE_SIZE, TILE_SIZE);
+  } catch {
+    return null;
+  }
 }
 
 /**
- * Marshall-Palmer: convert dBZ to mm/h.
- * Z = 200 * R^1.6  →  R = (Z/200)^(1/1.6)
- * where Z = 10^(dBZ/10)
+ * Color-to-precipitation lookup for RainViewer scheme 6.
+ * Reference colors from the green→yellow→orange→red→purple progression.
  */
-function dBZToMmH(dBZ) {
-  if (dBZ <= 0) return 0;
-  const Z = 10 ** (dBZ / 10);
-  return (Z / 200) ** (1 / 1.6);
+const COLOR_TABLE = [
+  { r: 200, g: 255, b: 200, mmh: 0.2 },   // pale green — drizzle
+  { r: 150, g: 255, b: 150, mmh: 0.5 },   // light green
+  { r: 0,   g: 208, b: 0,   mmh: 1.0 },   // green — light rain
+  { r: 0,   g: 144, b: 0,   mmh: 2.0 },   // dark green
+  { r: 255, g: 255, b: 0,   mmh: 4.0 },   // yellow — moderate
+  { r: 231, g: 192, b: 0,   mmh: 6.0 },   // gold
+  { r: 255, g: 144, b: 0,   mmh: 10.0 },  // orange — heavy
+  { r: 255, g: 0,   b: 0,   mmh: 20.0 },  // red
+  { r: 214, g: 0,   b: 0,   mmh: 30.0 },  // dark red — very heavy
+  { r: 192, g: 0,   b: 0,   mmh: 40.0 },  // maroon
+  { r: 255, g: 0,   b: 255, mmh: 60.0 },  // magenta — extreme
+  { r: 150, g: 0,   b: 200, mmh: 80.0 },  // purple
+];
+
+/** Closest-color match in RGB space → mm/h */
+function rgbToMmH(r, g, b) {
+  let bestDist = Infinity;
+  let bestMmH = 0;
+  for (const ref of COLOR_TABLE) {
+    const dist = (r - ref.r) ** 2 + (g - ref.g) ** 2 + (b - ref.b) ** 2;
+    if (dist < bestDist) { bestDist = dist; bestMmH = ref.mmh; }
+  }
+  return bestMmH;
 }
 
 /**
- * Read pixel at (px, py) from ImageData and convert to mm/h.
- * Returns null if alpha is 0 (no radar coverage).
+ * Read a single pixel. Returns mm/h or null if transparent or achromatic.
+ */
+function readSinglePixel(imageData, px, py) {
+  if (px < 0 || py < 0 || px >= TILE_SIZE || py >= TILE_SIZE) return null;
+  const idx = (py * TILE_SIZE + px) * 4;
+  const r = imageData.data[idx];
+  const g = imageData.data[idx + 1];
+  const b = imageData.data[idx + 2];
+  const a = imageData.data[idx + 3];
+  if (a < 10) return null;
+  // Reject grayscale artifacts (labels, borders, "no data" fills)
+  if (Math.max(r, g, b) - Math.min(r, g, b) < 30) return null;
+  return rgbToMmH(r, g, b);
+}
+
+/**
+ * Scan a neighborhood and return max precipitation found.
  */
 function readPixelValue(imageData, px, py) {
-  const idx = (py * TILE_SIZE + px) * 4;
-  const a = imageData.data[idx + 3];
-  if (a === 0) return null; // no coverage
-  const r = imageData.data[idx];
-  const dBZ = r - 32;
-  return dBZToMmH(dBZ);
+  let maxPrecip = null;
+  for (let dy = -SCAN_RADIUS; dy <= SCAN_RADIUS; dy++) {
+    for (let dx = -SCAN_RADIUS; dx <= SCAN_RADIUS; dx++) {
+      const val = readSinglePixel(imageData, px + dx, py + dy);
+      if (val !== null && (maxPrecip === null || val > maxPrecip)) {
+        maxPrecip = val;
+      }
+    }
+  }
+  return maxPrecip;
 }
 
 /**
- * Main export: extract precipitation values at all STATION_POINTS from a radar frame.
- *
- * @param {string} host - RainViewer host (e.g. "https://tilecache.rainviewer.com")
- * @param {string} framePath - Frame path (e.g. "/v2/radar/1616...")
- * @param {Array} points - Array of {name, lat, lng}
- * @param {number} zoom - Tile zoom level (default 6)
- * @returns {Promise<Array<{name, lat, lng, precip}>>}
+ * Main export: extract precipitation at all station points from a radar frame.
  */
-export async function extractPrecipFromRadar(host, framePath, points = STATION_POINTS, zoom = DEFAULT_ZOOM) {
+export async function extractPrecipFromRadar(host, framePath, points = STATION_POINTS) {
   // 1. Compute tile+pixel for each point
   const pointInfos = points.map((pt) => {
-    const { tileX, tileY, pixelX, pixelY } = latLngToTilePixel(pt.lat, pt.lng, zoom);
+    const { tileX, tileY, pixelX, pixelY } = latLngToTilePixel(pt.lat, pt.lng, ZOOM);
     return { ...pt, tileX, tileY, pixelX, pixelY, tileKey: `${tileX}_${tileY}` };
   });
 
@@ -102,12 +136,12 @@ export async function extractPrecipFromRadar(host, framePath, points = STATION_P
     }
   }
 
-  // 3. Fetch all tiles in parallel
+  // 3. Fetch all tiles in parallel (scheme 6, smooth=1, snow=1)
   const tileResults = new Map();
   const entries = [...uniqueTiles.entries()];
   const settled = await Promise.allSettled(
     entries.map(([key, { tileX, tileY }]) => {
-      const url = `${host}${framePath}/256/${zoom}/${tileX}/${tileY}/0/0_0.png`;
+      const url = `${host}${framePath}/256/${ZOOM}/${tileX}/${tileY}/6/1_1.png`;
       return fetchTilePixels(url).then((data) => ({ key, data }));
     })
   );

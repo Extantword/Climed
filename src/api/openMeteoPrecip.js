@@ -8,8 +8,9 @@
 
 const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
 
-// Sample points across Medellín neighborhoods
+// Precipitation measurement points across Antioquia
 export const STATION_POINTS = [
+  // ── Valle de Aburrá (Medellín metro) ──
   { name: 'Centro (La Candelaria)', lat: 6.2518, lng: -75.5636 },
   { name: 'El Poblado', lat: 6.2100, lng: -75.5700 },
   { name: 'Robledo', lat: 6.2750, lng: -75.5900 },
@@ -18,89 +19,176 @@ export const STATION_POINTS = [
   { name: 'Buenos Aires', lat: 6.2400, lng: -75.5450 },
   { name: 'Castilla', lat: 6.2850, lng: -75.5750 },
   { name: 'San Javier', lat: 6.2600, lng: -75.6100 },
+  { name: 'Envigado', lat: 6.1714, lng: -75.5911 },
+  { name: 'Itagüí', lat: 6.1847, lng: -75.6063 },
+  { name: 'Bello', lat: 6.3383, lng: -75.5511 },
+  { name: 'Copacabana', lat: 6.3500, lng: -75.5083 },
+  { name: 'Sabaneta', lat: 6.1517, lng: -75.6167 },
+  { name: 'La Estrella', lat: 6.1583, lng: -75.6417 },
+  { name: 'Caldas', lat: 6.0900, lng: -75.6367 },
+  { name: 'Girardota', lat: 6.3783, lng: -75.4550 },
+  { name: 'Barbosa', lat: 6.4389, lng: -75.3317 },
+
+  // ── Oriente antioqueño ──
+  { name: 'Rionegro', lat: 6.1553, lng: -75.3743 },
+  { name: 'Marinilla', lat: 6.1767, lng: -75.3367 },
+  { name: 'La Ceja', lat: 6.0325, lng: -75.4267 },
+  { name: 'El Retiro', lat: 6.0600, lng: -75.5067 },
+  { name: 'Guarne', lat: 6.2800, lng: -75.4450 },
+  { name: 'El Carmen de Viboral', lat: 6.0833, lng: -75.3333 },
+  { name: 'San Vicente Ferrer', lat: 6.2833, lng: -75.3333 },
+  { name: 'El Peñol', lat: 6.2217, lng: -75.2450 },
+  { name: 'Guatapé', lat: 6.2328, lng: -75.1567 },
+  { name: 'La Unión', lat: 5.9700, lng: -75.3617 },
+  { name: 'Sonsón', lat: 5.7133, lng: -75.3117 },
+
+  // ── Norte antioqueño ──
+  { name: 'Santa Rosa de Osos', lat: 6.6481, lng: -75.4594 },
+  { name: 'Yarumal', lat: 6.9644, lng: -75.4211 },
+  { name: 'San Pedro de los Milagros', lat: 6.4611, lng: -75.5578 },
+  { name: 'Donmatías', lat: 6.4856, lng: -75.3983 },
+  { name: 'Entrerríos', lat: 6.5650, lng: -75.5283 },
+
+  // ── Occidente antioqueño ──
+  { name: 'Santa Fe de Antioquia', lat: 6.5567, lng: -75.8283 },
+  { name: 'San Jerónimo', lat: 6.4433, lng: -75.7267 },
+  { name: 'Sopetrán', lat: 6.5017, lng: -75.7450 },
+  { name: 'Frontino', lat: 6.7767, lng: -76.1350 },
+
+  // ── Suroeste antioqueño ──
+  { name: 'Andes', lat: 5.6583, lng: -75.8800 },
+  { name: 'Jardín', lat: 5.5983, lng: -75.8200 },
+  { name: 'Ciudad Bolívar', lat: 5.8517, lng: -76.0233 },
+  { name: 'Jericó', lat: 5.7917, lng: -75.7833 },
+  { name: 'Amagá', lat: 6.0417, lng: -75.7033 },
+  { name: 'Fredonia', lat: 5.9267, lng: -75.6717 },
+  { name: 'Támesis', lat: 5.6617, lng: -75.7133 },
+
+  // ── Nordeste antioqueño ──
+  { name: 'Segovia', lat: 7.0783, lng: -74.7000 },
+  { name: 'Remedios', lat: 7.0283, lng: -74.6933 },
+  { name: 'Cisneros', lat: 6.5367, lng: -75.0883 },
+  { name: 'Yolombó', lat: 6.5983, lng: -75.0133 },
+
+  // ── Bajo Cauca ──
+  { name: 'Caucasia', lat: 7.9847, lng: -75.1983 },
+  { name: 'El Bagre', lat: 7.5933, lng: -74.8083 },
+  { name: 'Nechí', lat: 8.0917, lng: -74.7750 },
+
+  // ── Urabá ──
+  { name: 'Apartadó', lat: 7.8833, lng: -76.6333 },
+  { name: 'Turbo', lat: 8.0933, lng: -76.7267 },
+  { name: 'Chigorodó', lat: 7.6667, lng: -76.6833 },
+  { name: 'Necoclí', lat: 8.4250, lng: -76.7850 },
+  { name: 'Carepa', lat: 7.7567, lng: -76.6533 },
+
+  // ── Magdalena Medio ──
+  { name: 'Puerto Berrío', lat: 6.4900, lng: -74.4050 },
+  { name: 'Puerto Nare', lat: 6.1933, lng: -74.5867 },
+  { name: 'Puerto Triunfo', lat: 5.8700, lng: -74.6350 },
 ];
 
 /**
- * Fetch precipitation data for a single point (current: past 24h + forecast 48h).
+ * Open-Meteo supports multi-location requests via comma-separated lat/lng.
+ * We batch in groups to avoid URL-length limits (~30 points per batch).
  */
-async function fetchPointPrecipitation(lat, lng) {
-  const params = new URLSearchParams({
-    latitude: lat,
-    longitude: lng,
-    hourly: 'precipitation,rain,showers,weathercode',
-    past_hours: '24',
-    forecast_hours: '48',
-    timezone: 'America/Bogota',
-  });
+const BATCH_SIZE = 30;
 
-  const res = await fetch(`${FORECAST_URL}?${params}`);
-  if (!res.ok) throw new Error(`Open-Meteo error for (${lat}, ${lng})`);
-  return res.json();
+function chunkArray(arr, size) {
+  const chunks = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  return chunks;
 }
 
 /**
- * Fetch historical precipitation for a single point (past 7 days + forecast 48h).
- * Uses Open-Meteo's past_days parameter for up to 92 days of recent history.
+ * Fetch a batch of points from Open-Meteo in a single request.
+ * Returns an array of responses (one per coordinate).
  */
-async function fetchPointHistorical(lat, lng) {
+async function fetchBatch(points, extraParams = {}) {
   const params = new URLSearchParams({
-    latitude: lat,
-    longitude: lng,
+    latitude: points.map((p) => p.lat).join(','),
+    longitude: points.map((p) => p.lng).join(','),
     hourly: 'precipitation,rain,showers,weathercode',
-    past_days: '7',
-    forecast_days: '2',
     timezone: 'America/Bogota',
+    ...extraParams,
   });
 
   const res = await fetch(`${FORECAST_URL}?${params}`);
-  if (!res.ok) throw new Error(`Open-Meteo historical error for (${lat}, ${lng})`);
-  return res.json();
+  if (!res.ok) throw new Error('Open-Meteo batch error');
+  const data = await res.json();
+
+  // Single point returns an object; multiple points returns an array
+  return Array.isArray(data) ? data : [data];
 }
 
 /**
- * Fetch precipitation for all station points in Medellín (current mode).
+ * Fetch precipitation for all station points across Antioquia (current mode).
+ * Uses batched multi-location requests for efficiency.
  */
 export async function fetchOpenMeteoPrecipitation() {
-  const results = await Promise.allSettled(
-    STATION_POINTS.map(async (point) => {
-      const data = await fetchPointPrecipitation(point.lat, point.lng);
-      return {
-        name: point.name,
-        lat: point.lat,
-        lng: point.lng,
-        hourly: data.hourly || {},
-        source: 'Open-Meteo',
-      };
-    })
+  const batches = chunkArray(STATION_POINTS, BATCH_SIZE);
+  const allResults = [];
+
+  const batchResults = await Promise.allSettled(
+    batches.map((batch) => fetchBatch(batch, { past_hours: '24', forecast_hours: '48' }))
   );
 
-  return results
-    .filter((r) => r.status === 'fulfilled')
-    .map((r) => r.value);
+  let pointIndex = 0;
+  for (let b = 0; b < batchResults.length; b++) {
+    const batch = batches[b];
+    if (batchResults[b].status === 'fulfilled') {
+      const dataArr = batchResults[b].value;
+      for (let i = 0; i < batch.length; i++) {
+        allResults.push({
+          name: batch[i].name,
+          lat: batch[i].lat,
+          lng: batch[i].lng,
+          hourly: dataArr[i]?.hourly || {},
+          source: 'Open-Meteo',
+        });
+      }
+    } else {
+      console.warn(`Open-Meteo batch ${b} failed:`, batchResults[b].reason?.message);
+    }
+    pointIndex += batch.length;
+  }
+
+  return allResults;
 }
 
 /**
  * Fetch 7-day historical precipitation for all station points.
- * Returns same format as fetchOpenMeteoPrecipitation but with ~216 hourly entries
- * (7 days × 24h + 2 days forecast × 24h).
+ * Uses batched multi-location requests for efficiency.
  */
 export async function fetchHistoricalPrecipitation() {
-  const results = await Promise.allSettled(
-    STATION_POINTS.map(async (point) => {
-      const data = await fetchPointHistorical(point.lat, point.lng);
-      return {
-        name: point.name,
-        lat: point.lat,
-        lng: point.lng,
-        hourly: data.hourly || {},
-        source: 'Open-Meteo (Histórico)',
-      };
-    })
+  const batches = chunkArray(STATION_POINTS, BATCH_SIZE);
+  const allResults = [];
+
+  const batchResults = await Promise.allSettled(
+    batches.map((batch) => fetchBatch(batch, { past_days: '7', forecast_days: '2' }))
   );
 
-  return results
-    .filter((r) => r.status === 'fulfilled')
-    .map((r) => r.value);
+  for (let b = 0; b < batchResults.length; b++) {
+    const batch = batches[b];
+    if (batchResults[b].status === 'fulfilled') {
+      const dataArr = batchResults[b].value;
+      for (let i = 0; i < batch.length; i++) {
+        allResults.push({
+          name: batch[i].name,
+          lat: batch[i].lat,
+          lng: batch[i].lng,
+          hourly: dataArr[i]?.hourly || {},
+          source: 'Open-Meteo (Histórico)',
+        });
+      }
+    } else {
+      console.warn(`Open-Meteo historical batch ${b} failed:`, batchResults[b].reason?.message);
+    }
+  }
+
+  return allResults;
 }
 
 /**

@@ -19,7 +19,6 @@ export function useRadarPrecip(host, currentFrame, playing) {
 
     extractPrecipFromRadar(host, currentFrame.path)
       .then((points) => {
-        // Discard stale results
         if (id === requestId.current) {
           setRadarPoints(points);
         }
