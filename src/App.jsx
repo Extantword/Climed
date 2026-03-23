@@ -4,16 +4,15 @@ import MainMap from './components/map/MainMap';
 import RadarControls from './components/RadarControls';
 import RadarLegend from './components/RadarLegend';
 import HelpModal from './components/HelpModal';
+import FeedbackModal from './components/FeedbackModal';
 import { useRainRadar } from './hooks/useRainRadar';
 import { useHistoricalReplay } from './hooks/useHistoricalReplay';
-import { useRadarPrecip } from './hooks/useRadarPrecip';
-
 export default function App() {
   const radar = useRainRadar();
   const replay = useHistoricalReplay();
-  const radarPrecip = useRadarPrecip(radar.host, radar.currentFrame, radar.playing);
   const [replayActive, setReplayActive] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -22,7 +21,7 @@ export default function App() {
         host={radar.host}
         currentFrame={radar.currentFrame}
         replayActive={true}
-        replayPoints={replayActive ? replay.currentPoints : radarPrecip.radarPoints}
+        replayPoints={replayActive ? replay.currentPoints : replay.nowPoints}
       />
 
       {/* Top overlay: header */}
@@ -34,6 +33,7 @@ export default function App() {
             loading={radar.loading}
             onRefresh={radar.refetch}
             onHelp={() => setHelpOpen(true)}
+            onFeedback={() => setFeedbackOpen(true)}
           />
         </div>
       </div>
@@ -80,6 +80,7 @@ export default function App() {
 
       {/* Help modal */}
       <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} />
+      <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </div>
   );
 }

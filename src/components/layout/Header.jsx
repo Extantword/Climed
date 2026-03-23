@@ -8,7 +8,7 @@ function formatTime(date) {
   return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-export default function Header({ frameTime, isNowcast, loading, onRefresh, onHelp }) {
+export default function Header({ frameTime, isNowcast, loading, onRefresh, onHelp, onFeedback }) {
   return (
     <header className="bg-white/90 backdrop-blur border-b border-slate-200 px-4 py-2 flex items-center justify-between shadow-sm">
       <div className="flex items-center gap-3">
@@ -23,6 +23,13 @@ export default function Header({ frameTime, isNowcast, loading, onRefresh, onHel
           title="¿Cómo funciona?"
         >
           ¿Cómo funciona?
+        </button>
+        <button
+          onClick={onFeedback}
+          className="px-2.5 py-1 rounded-lg text-xs font-semibold text-amber-600 hover:text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 transition-colors"
+          title="Evalúa el proyecto"
+        >
+          Evalúa el proyecto!
         </button>
       </div>
 
