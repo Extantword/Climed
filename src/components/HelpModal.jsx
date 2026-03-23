@@ -27,21 +27,34 @@ export default function HelpModal({ open, onClose }) {
           {/* Intro */}
           <p>
             Esta aplicación monitorea la <strong>precipitación en tiempo real</strong> sobre
-            Medellín y el Área Metropolitana del Valle de Aburrá, combinando
-            múltiples fuentes de datos abiertos para darte una vista completa del
-            clima.
+            Medellín y Antioquia, combinando radar meteorológico y datos de
+            modelos numéricos para darte una vista clara de lo que está lloviendo
+            ahora y lo que ha llovido en los últimos días.
           </p>
 
           {/* Radar */}
           <div>
             <h3 className="font-semibold text-slate-900 mb-1">🌧️ Radar de lluvia</h3>
             <p>
-              El mapa base muestra una capa de radar proporcionada por
-              <strong> RainViewer</strong>. Esta capa se actualiza cada 10 minutos
-              y muestra dónde está lloviendo en este momento. Los colores siguen
-              la leyenda de intensidad (verde = ligera, rojo = intensa, morado =
-              extrema). Puedes usar la barra inferior para retroceder hasta 90
-              minutos o ver el pronóstico de la próxima hora.
+              El mapa muestra una capa de radar proporcionada por{' '}
+              <strong>RainViewer</strong>, que se actualiza cada 10 minutos con
+              imágenes reales de precipitación. Los colores siguen la leyenda de
+              intensidad (verde = ligera, rojo = intensa, morado = extrema).
+              Puedes retroceder hasta <strong>90 minutos</strong> o ver el
+              pronóstico de la próxima hora usando la barra de tiempo.
+            </p>
+          </div>
+
+          {/* Círculos */}
+          <div>
+            <h3 className="font-semibold text-slate-900 mb-1">⭕ Círculos de precipitación</h3>
+            <p>
+              En la vista por defecto, los círculos sobre el mapa reflejan la
+              precipitación actual estimada por <strong>Open-Meteo</strong> en{' '}
+              <strong>59 puntos</strong> distribuidos por todo el departamento de
+              Antioquia — desde el Valle de Aburrá hasta el Bajo Cauca y el
+              Magdalena Medio. El tamaño y color del círculo indica la intensidad
+              en mm/h.
             </p>
           </div>
 
@@ -49,58 +62,23 @@ export default function HelpModal({ open, onClose }) {
           <div>
             <h3 className="font-semibold text-slate-900 mb-1">⏱️ Replay histórico</h3>
             <p>
-              Al activar el botón <strong>"⏱️ Replay histórico"</strong> se
-              cargan los datos reales de precipitación de los <strong>últimos
-              7 días</strong> para 8 puntos distribuidos en los barrios de
-              Medellín (Centro, El Poblado, Robledo, Manrique, Belén, Buenos
-              Aires, Castilla y San Javier). Los datos provienen de
-              <strong> Open-Meteo</strong>.
-            </p>
-            <p className="mt-1.5">
-              Aparecen círculos de colores sobre el mapa que reflejan la
-              intensidad real registrada en cada zona. Puedes reproducir la
-              animación, arrastrar la línea de tiempo, y ajustar la
-              <strong> velocidad</strong> (0.5× a 8×) para explorar cómo
-              evolucionó la lluvia.
-            </p>
-          </div>
-
-          {/* Panel de precipitación */}
-          <div>
-            <h3 className="font-semibold text-slate-900 mb-1">💧 Panel de precipitación</h3>
-            <p>
-              El botón <strong>"💧 Precipitación"</strong> abre un panel lateral
-              con datos de 3 fuentes abiertas:
-            </p>
-            <div className="mt-2 space-y-1.5 pl-3 border-l-2 border-blue-200">
-              <p>
-                <strong>Open-Meteo:</strong> precipitación actual (mm/h),
-                acumulado 24h y pronóstico 6h para cada barrio.
-              </p>
-              <p>
-                <strong>datos.gov.co:</strong> lecturas de las estaciones
-                automáticas del IDEAM en Antioquia vía el portal de datos
-                abiertos de Colombia.
-              </p>
-              <p>
-                <strong>IDEAM:</strong> observaciones de precipitación del
-                Instituto de Hidrología, Meteorología y Estudios Ambientales.
-              </p>
-            </div>
-            <p className="mt-1.5">
-              Los indicadores de estado (verde/rojo) muestran si cada fuente
-              está respondiendo correctamente.
+              Al activar <strong>"⏱️ Replay histórico"</strong> se cargan los
+              datos horarios de precipitación de los <strong>últimos 7 días</strong>{' '}
+              para los mismos 59 puntos, obtenidos de <strong>Open-Meteo</strong>.
+              Puedes reproducir la animación, arrastrar la línea de tiempo y
+              ajustar la <strong>velocidad</strong> (0.5× a 8×) para ver cómo
+              evolucionaron las lluvias hora a hora.
             </p>
           </div>
 
           {/* Mapa */}
           <div>
-            <h3 className="font-semibold text-slate-900 mb-1">🗺️ Navegación del mapa</h3>
+            <h3 className="font-semibold text-slate-900 mb-1">🗺️ Navegación</h3>
             <p>
-              El mapa está limitado al departamento de <strong>Antioquia</strong>,
-              así que no puedes desplazarte fuera de la región. Puedes hacer zoom
-              con la rueda del ratón o los botones +/– para explorar desde una
-              vista general hasta el detalle por calles.
+              El mapa cubre el departamento de <strong>Antioquia</strong>. Usa
+              la rueda del ratón o los botones +/– para hacer zoom. El encabezado
+              muestra la hora del frame de radar actual y si estás viendo datos
+              pasados o un pronóstico (<em>nowcast</em>).
             </p>
           </div>
 
@@ -108,11 +86,9 @@ export default function HelpModal({ open, onClose }) {
           <div className="bg-slate-50 rounded-lg px-4 py-3">
             <h3 className="font-semibold text-slate-900 mb-1">📡 Fuentes de datos</h3>
             <div className="text-xs text-slate-500 space-y-0.5">
-              <p>• RainViewer — radar de precipitación global</p>
-              <p>• Open-Meteo — pronóstico e historial meteorológico</p>
-              <p>• datos.gov.co — portal de datos abiertos de Colombia (IDEAM)</p>
-              <p>• IDEAM — Instituto de Hidrología, Meteorología y Estudios Ambientales</p>
-              <p>• OpenStreetMap — mapa base</p>
+              <p>• <strong>RainViewer</strong> — radar de precipitación global en tiempo real</p>
+              <p>• <strong>Open-Meteo</strong> — modelo meteorológico abierto, precipitación actual e histórica</p>
+              <p>• <strong>OpenStreetMap</strong> — mapa base</p>
             </div>
           </div>
         </div>
